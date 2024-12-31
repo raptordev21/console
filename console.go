@@ -104,6 +104,27 @@ func Log(options LogOptions) {
 	fmt.Println()
 }
 
+func Info(str string) {
+	str = styles("blue") + str + styles("reset")
+	fmt.Print(str)
+	fmt.Println()
+}
+func Success(str string) {
+	str = styles("green") + str + styles("reset")
+	fmt.Print(str)
+	fmt.Println()
+}
+func Error(str string) {
+	str = styles("red") + str + styles("reset")
+	fmt.Print(str)
+	fmt.Println()
+}
+func Warn(str string) {
+	str = styles("yellow") + str + styles("reset")
+	fmt.Print(str)
+	fmt.Println()
+}
+
 func generateSpaces(input string) string {
 	length := len(input)
 	return strings.Repeat(" ", length)
