@@ -6,18 +6,18 @@ Style console/terminal string
 package console
 
 type LogOptions struct {
-	msg             string
-	color           string
-	bgColor         string
-	isBold          bool
-	isUnderline     bool
-	isItalic        bool
-	isDim           bool
-	isBlink         bool
-	isReverse       bool
-	isHidden        bool
-	isStrikethrough bool
-	isBanner        bool
+	Msg             string
+	Color           string
+	BgColor         string
+	IsBold          bool
+	IsUnderline     bool
+	IsItalic        bool
+	IsDim           bool
+	IsBlink         bool
+	IsReverse       bool
+	IsHidden        bool
+	IsStrikethrough bool
+	IsBanner        bool
 }
 ```
 
@@ -32,29 +32,29 @@ import (
 
 func main() {
   console.Log(console.LogOptions{
-		msg:    "This is bold with blue text color",
-		color:  "blue",
-		isBold: true,
+		Msg:    "This is bold with blue text color",
+		Color:  "blue",
+		IsBold: true,
 	})
 
   err := "Some Error" 
   console.Log(console.LogOptions{
-		msg:    fmt.Sprint("Red Color Text:", err),
-		color:  "red",
+		Msg:    fmt.Sprint("Red Color Text:", err),
+		Color:  "red",
 	})
 
   app := "My App"
   console.Log(console.LogOptions{
-		msg:      fmt.Sprintf("Welcome to %v", app),
-		bgColor:  "bgCyan",
-		isBold:   true,
-		isBanner: true,
+		Msg:      fmt.Sprintf("Welcome to %v", app),
+		BgColor:  "bgCyan",
+		IsBold:   true,
+		IsBanner: true,
 	})
 
   console.Log(console.LogOptions{
-		msg:   "Text is underlined & color is magenta",
-		color: "magenta",
-    isUnderline: true,
+		Msg:   "Text is underlined & color is magenta",
+		Color: "magenta",
+    IsUnderline: true,
 	})
 }
 ```

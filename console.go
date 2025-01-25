@@ -2,161 +2,129 @@ package console
 
 import (
 	"fmt"
-	"strings"
+
+	"github.com/raptordev21/console/colors"
+	"github.com/raptordev21/console/internal/constants"
+	"github.com/raptordev21/console/internal/helpers"
+	"github.com/raptordev21/console/internal/styles"
 )
 
 type LogOptions struct {
-	msg             string
-	color           string
-	bgColor         string
-	isBold          bool
-	isUnderline     bool
-	isItalic        bool
-	isDim           bool
-	isBlink         bool
-	isReverse       bool
-	isHidden        bool
-	isStrikethrough bool
-	isBanner        bool
+	Msg             string
+	Color           string
+	BgColor         string
+	IsBold          bool
+	IsUnderline     bool
+	IsItalic        bool
+	IsDim           bool
+	IsBlink         bool
+	IsReverse       bool
+	IsHidden        bool
+	IsStrikethrough bool
+	IsBanner        bool
 }
 
 func Log(options LogOptions) {
 	var spaces string
-	if options.isBanner {
-		spaces = styles(options.bgColor) + `      ` + generateSpaces(options.msg) + `      ` + styles("reset")
-		options.msg = `      ` + options.msg + `      ` + styles("reset")
+	if options.IsBanner {
+		spaces = styles.Get(options.BgColor) + `      ` + helpers.GenerateSpaces(options.Msg) + `      ` + styles.Get(constants.Prop.Reset)
+		options.Msg = `      ` + options.Msg + `      ` + styles.Get(constants.Prop.Reset)
 	} else {
-		options.msg = options.msg + styles("reset")
+		options.Msg = options.Msg + styles.Get(constants.Prop.Reset)
 	}
 
-	switch options.color {
-	case "black":
-		options.msg = styles(options.color) + options.msg
-	case "red":
-		options.msg = styles(options.color) + options.msg
-	case "green":
-		options.msg = styles(options.color) + options.msg
-	case "yellow":
-		options.msg = styles(options.color) + options.msg
-	case "blue":
-		options.msg = styles(options.color) + options.msg
-	case "magenta":
-		options.msg = styles(options.color) + options.msg
-	case "cyan":
-		options.msg = styles(options.color) + options.msg
-	case "white":
-		options.msg = styles(options.color) + options.msg
+	switch options.Color {
+	case colors.Color.Black:
+		options.Msg = styles.Get(options.Color) + options.Msg
+	case colors.Color.Red:
+		options.Msg = styles.Get(options.Color) + options.Msg
+	case colors.Color.Green:
+		options.Msg = styles.Get(options.Color) + options.Msg
+	case colors.Color.Yellow:
+		options.Msg = styles.Get(options.Color) + options.Msg
+	case colors.Color.Blue:
+		options.Msg = styles.Get(options.Color) + options.Msg
+	case colors.Color.Magenta:
+		options.Msg = styles.Get(options.Color) + options.Msg
+	case colors.Color.Cyan:
+		options.Msg = styles.Get(options.Color) + options.Msg
+	case colors.Color.White:
+		options.Msg = styles.Get(options.Color) + options.Msg
 	default:
 	}
 
-	switch options.bgColor {
-	case "bgBlack":
-		options.msg = styles(options.bgColor) + options.msg
-	case "bgRed":
-		options.msg = styles(options.bgColor) + options.msg
-	case "bgGreen":
-		options.msg = styles(options.bgColor) + options.msg
-	case "bgYellow":
-		options.msg = styles(options.bgColor) + options.msg
-	case "bgBlue":
-		options.msg = styles(options.bgColor) + options.msg
-	case "bgMagenta":
-		options.msg = styles(options.bgColor) + options.msg
-	case "bgCyan":
-		options.msg = styles(options.bgColor) + options.msg
-	case "bgWhite":
-		options.msg = styles(options.bgColor) + options.msg
+	switch options.BgColor {
+	case colors.Color.BgBlack:
+		options.Msg = styles.Get(options.BgColor) + options.Msg
+	case colors.Color.BgRed:
+		options.Msg = styles.Get(options.BgColor) + options.Msg
+	case colors.Color.BgGreen:
+		options.Msg = styles.Get(options.BgColor) + options.Msg
+	case colors.Color.BgYellow:
+		options.Msg = styles.Get(options.BgColor) + options.Msg
+	case colors.Color.BgBlue:
+		options.Msg = styles.Get(options.BgColor) + options.Msg
+	case colors.Color.BgMagenta:
+		options.Msg = styles.Get(options.BgColor) + options.Msg
+	case colors.Color.BgCyan:
+		options.Msg = styles.Get(options.BgColor) + options.Msg
+	case colors.Color.BgWhite:
+		options.Msg = styles.Get(options.BgColor) + options.Msg
 	default:
 	}
 
-	if options.isBold {
-		options.msg = styles("bold") + options.msg
+	if options.IsBold {
+		options.Msg = styles.Get(constants.Prop.Bold) + options.Msg
 	}
-	if options.isUnderline {
-		options.msg = styles("underline") + options.msg
+	if options.IsUnderline {
+		options.Msg = styles.Get(constants.Prop.Underline) + options.Msg
 	}
-	if options.isItalic {
-		options.msg = styles("italic") + options.msg
+	if options.IsItalic {
+		options.Msg = styles.Get(constants.Prop.Italic) + options.Msg
 	}
-	if options.isDim {
-		options.msg = styles("dim") + options.msg
+	if options.IsDim {
+		options.Msg = styles.Get(constants.Prop.Dim) + options.Msg
 	}
-	if options.isBlink {
-		options.msg = styles("blink") + options.msg
+	if options.IsBlink {
+		options.Msg = styles.Get(constants.Prop.Blink) + options.Msg
 	}
-	if options.isReverse {
-		options.msg = styles("reverse") + options.msg
+	if options.IsReverse {
+		options.Msg = styles.Get(constants.Prop.Reverse) + options.Msg
 	}
-	if options.isHidden {
-		options.msg = styles("hidden") + options.msg
+	if options.IsHidden {
+		options.Msg = styles.Get(constants.Prop.Hidden) + options.Msg
 	}
-	if options.isStrikethrough {
-		options.msg = styles("strikethrough") + options.msg
+	if options.IsStrikethrough {
+		options.Msg = styles.Get(constants.Prop.Strikethrough) + options.Msg
 	}
 
-	if options.isBanner {
+	if options.IsBanner {
 		fmt.Println(spaces)
-		fmt.Println(options.msg)
+		fmt.Println(options.Msg)
 		fmt.Print(spaces)
 	} else {
-		fmt.Print(options.msg)
+		fmt.Print(options.Msg)
 	}
 	fmt.Println()
 }
 
 func Info(str string) {
-	str = styles("blue") + str + styles("reset")
+	str = styles.Get(colors.Color.Blue) + str + styles.Get(constants.Prop.Reset)
 	fmt.Print(str)
 	fmt.Println()
 }
 func Success(str string) {
-	str = styles("green") + str + styles("reset")
+	str = styles.Get(colors.Color.Green) + str + styles.Get(constants.Prop.Reset)
 	fmt.Print(str)
 	fmt.Println()
 }
 func Error(str string) {
-	str = styles("red") + str + styles("reset")
+	str = styles.Get(colors.Color.Red) + str + styles.Get(constants.Prop.Reset)
 	fmt.Print(str)
 	fmt.Println()
 }
 func Warn(str string) {
-	str = styles("yellow") + str + styles("reset")
+	str = styles.Get(colors.Color.Yellow) + str + styles.Get(constants.Prop.Reset)
 	fmt.Print(str)
 	fmt.Println()
-}
-
-func generateSpaces(input string) string {
-	length := len(input)
-	return strings.Repeat(" ", length)
-}
-
-func styles(key string) string {
-	styles := make(map[string]string)
-	styles["reset"] = "\033[0m"
-	styles["bold"] = "\033[1m"
-	styles["dim"] = "\033[2m"
-	styles["italic"] = "\033[3m"
-	styles["underline"] = "\033[4m"
-	styles["blink"] = "\033[5m"
-	styles["reverse"] = "\033[7m"
-	styles["hidden"] = "\033[8m"
-	styles["strikethrough"] = "\033[9m"
-	styles["black"] = "\033[30m"
-	styles["red"] = "\033[31m"
-	styles["green"] = "\033[32m"
-	styles["yellow"] = "\033[33m"
-	styles["blue"] = "\033[34m"
-	styles["magenta"] = "\033[35m"
-	styles["cyan"] = "\033[36m"
-	styles["white"] = "\033[37m"
-	styles["bgBlack"] = "\033[40m"
-	styles["bgRed"] = "\033[41m"
-	styles["bgGreen"] = "\033[42m"
-	styles["bgYellow"] = "\033[43m"
-	styles["bgBlue"] = "\033[44m"
-	styles["bgMagenta"] = "\033[45m"
-	styles["bgCyan"] = "\033[46m"
-	styles["bgWhite"] = "\033[47m"
-
-	return styles[key]
 }
