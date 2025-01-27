@@ -27,34 +27,35 @@ Note: Every `LogOptions` combination may not work. This depends on terminal.
 package main
 
 import (
-  "github.com/raptordev21/console"
+  "github.com/raptordev21/console/v1"
+  "github.com/raptordev21/console/v1/colors"
 )
 
 func main() {
   console.Log(console.LogOptions{
 		Msg:    "This is bold with blue text color",
-		Color:  "blue",
+		Color:  colors.Color.Blue,
 		IsBold: true,
 	})
 
   err := "Some Error" 
   console.Log(console.LogOptions{
 		Msg:    fmt.Sprint("Red Color Text:", err),
-		Color:  "red",
+		Color:  colors.Color.Red,
 	})
 
   app := "My App"
   console.Log(console.LogOptions{
 		Msg:      fmt.Sprintf("Welcome to %v", app),
-		BgColor:  "bgCyan",
+		BgColor:  colors.Color.BgCyan,
 		IsBold:   true,
 		IsBanner: true,
 	})
 
   console.Log(console.LogOptions{
 		Msg:   "Text is underlined & color is magenta",
-		Color: "magenta",
-    IsUnderline: true,
+		Color: colors.Color.Magenta,
+        IsUnderline: true,
 	})
 }
 ```
@@ -64,7 +65,7 @@ func main() {
 package main
 
 import (
-  "github.com/raptordev21/console"
+  "github.com/raptordev21/console/v1"
 )
 
 func main() {
