@@ -3,10 +3,10 @@ package console
 import (
 	"fmt"
 
-	"github.com/raptordev21/console/v1/colors"
-	"github.com/raptordev21/console/v1/internal/constants"
-	"github.com/raptordev21/console/v1/internal/helpers"
-	"github.com/raptordev21/console/v1/internal/styles"
+	"github.com/raptordev21/console/colors"
+	"github.com/raptordev21/console/internal/constants"
+	"github.com/raptordev21/console/internal/helpers"
+	"github.com/raptordev21/console/internal/styles"
 )
 
 type LogOptions struct {

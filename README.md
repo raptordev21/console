@@ -27,8 +27,8 @@ Note: Every `LogOptions` combination may not work. This depends on terminal.
 package main
 
 import (
-  "github.com/raptordev21/console/v1"
-  "github.com/raptordev21/console/v1/colors"
+  "github.com/raptordev21/console"
+  "github.com/raptordev21/console/colors"
 )
 
 func main() {
@@ -65,7 +65,7 @@ func main() {
 package main
 
 import (
-  "github.com/raptordev21/console/v1"
+  "github.com/raptordev21/console"
 )
 
 func main() {

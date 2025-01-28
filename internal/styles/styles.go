@@ -1,8 +1,8 @@
 package styles
 
 import (
-	"github.com/raptordev21/console/v1/colors"
-	"github.com/raptordev21/console/v1/internal/constants"
+	"github.com/raptordev21/console/colors"
+	"github.com/raptordev21/console/internal/constants"
 )
 
 func Get(key string) string {

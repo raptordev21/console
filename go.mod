@@ -1,3 +1,3 @@
-module github.com/raptordev21/console/v1
+module github.com/raptordev21/console
 
 go 1.23.5
